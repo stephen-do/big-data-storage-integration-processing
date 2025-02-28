@@ -1,0 +1,3 @@
+config:
+  webserver:
+    expose_config: 'True'
