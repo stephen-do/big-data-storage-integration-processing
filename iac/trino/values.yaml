@@ -383,7 +383,7 @@ eventListenerProperties: []
 # ```
 
 catalogs:
-  lakehouse: |
+  lakehouse: |-
     connector.name=iceberg
     iceberg.catalog.type=jdbc
     iceberg.jdbc-catalog.driver-class=org.postgresql.Driver
@@ -392,6 +392,13 @@ catalogs:
     iceberg.jdbc-catalog.connection-password=admin
     iceberg.jdbc-catalog.catalog-name=golden
     iceberg.jdbc-catalog.default-warehouse-dir=s3a://golden
+    s3.endpoint=http://minio-service.minio-dev.svc.cluster.local:9000
+    s3.aws-access-key=admin
+    s3.aws-secret-key=Qwerty@1234
+    s3.region=us-east-1
+    s3.path-style-access=true
+    fs.hadoop.enabled=false
+    fs.native-s3.enabled=true
   tpch: |
     connector.name=tpch
     tpch.splits-per-node=4
@@ -417,15 +424,7 @@ additionalCatalogs: {}
 # additionalCatalogs -- Deprecated, use `catalogs` instead. Configure additional
 # [catalogs](https://trino.io/docs/current/installation/deployment.html#catalog-properties).
 
-env:
-  - name: AWS_ENDPOINT
-    value: http://minio-service.minio-dev.svc.cluster.local:9000
-  - name: AWS_ACCESS_KEY_ID
-    value: admin
-  - name: AWS_SECRET_ACCESS_KEY
-    value: Qwerty@1234
-  - name: AWS_S3_PATH_STYLE_ACCESS
-    value: "true"
+env: []
 # env -- additional environment variables added to every pod, specified as a list with explicit values
 # @raw
 # Example:
