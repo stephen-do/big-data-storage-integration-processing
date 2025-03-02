@@ -22,6 +22,13 @@ Create cluster role binding for jupyterlab driver pod creates executer pods
 ```
 kubectl create clusterrolebinding spark-driver-rb --clusterrole=cluster-admin --serviceaccount=jupyterlab:spark-driver
 ```
+## Installation
+```
+kubectl apply -f cfm.yaml
+kubectl apply -f svc.yaml
+kubectl apply -f pod.yaml
+kubectl logs -n jupyterlab jupyterlab
+```
 
 ## Demo
 
