@@ -11,7 +11,7 @@ spec:
   - name: http
     port: 8888
     protocol: TCP
-    nodePort: 31004
+    nodePort: 30002
   - name: blockmanager
     port: 7777
     protocol: TCP

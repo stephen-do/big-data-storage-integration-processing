@@ -23,9 +23,10 @@ spec:
         cpu: "2"
     volumeMounts:
     - name: notebook-data
-      mountPath: /opt/spark/work-dir/
+      mountPath: /root/.jupyter/jupyter_notebook_config.py
+      subPath: app_configuration.py
   volumes:
-    - name: notebook-data
-      persistentVolumeClaim:
-        claimName: jupyterlab
+  - name: notebook-data
+    configMap:
+      name: jupyter-notebook-config
   restartPolicy: Always

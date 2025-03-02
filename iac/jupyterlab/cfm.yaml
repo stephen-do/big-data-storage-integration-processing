@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jupyter-notebook-config
+  namespace: jupyterlab
+data:
+  app_configuration.py: |
+    from s3contents import S3ContentsManager
+    c = get_config()
+    # S3 Object Storage Configuration
+    c.NotebookApp.contents_manager_class = S3ContentsManager
+    c.S3ContentsManager.access_key_id = "admin"
+    c.S3ContentsManager.secret_access_key = "Qwerty@1234"
+    c.S3ContentsManager.endpoint_url = "http://minio-service.minio-dev.svc.cluster.local:9000"
+    c.S3ContentsManager.bucket = "jupyterlab"
+    c.S3ContentsManager.prefix = "notebooks"
