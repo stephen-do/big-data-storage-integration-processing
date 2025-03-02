@@ -1,9 +1,6 @@
 
 # Jupyterlab + pyspark on k8s
 
-
-
-
 ## Build image
 
 Build and Push docker image
