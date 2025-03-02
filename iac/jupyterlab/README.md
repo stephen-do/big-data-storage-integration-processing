@@ -1,3 +1,35 @@
+
+# Jupyterlab + pyspark on k8s
+
+
+
+
+## Build image
+
+Build and Push docker image
+
+```bash
+docker build -t dongoctuyen/jupyterlab:spark-base-v3.4 .
+docker push dongoctuyen/jupyterlab:spark-base-v3.4
+```
+## Deployment
+Create k8s namespace
+```
+kubectl create namespace jupyterlab
+```
+Create service account for driver pod
+```
+kubectl create serviceaccount spark-driver -n jupyterlab
+```
+Create cluster role binding for jupyterlab driver pod creates executer pods
+```
+kubectl create clusterrolebinding spark-driver-rb --clusterrole=cluster-admin --serviceaccount=jupyterlab:spark-driver
+```
+
+## Demo
+
+Create new notebook and run 
+```
 import pyspark
 from pyspark.sql import functions as F
 from pyspark.sql.session import SparkSession
@@ -14,3 +46,5 @@ conf.set("spark.kubernetes.authenticate.serviceAccountName", "spark-driver")
 conf.set("spark.executor.instances", "1")
 conf.set("spark.kubernetes.container.image.pullPolicy", "IfNotPresent")
 spark = SparkSession.builder.appName('test').config(conf=conf).getOrCreate()
+```
+
