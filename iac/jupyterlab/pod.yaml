@@ -12,7 +12,7 @@ spec:
   containers:
   - name: jupyter-driver-pod
     image: dongoctuyen/jupyterlab:spark-base-v3.4
-    imagePullPolicy: IfNotPresent
+    imagePullPolicy: Never
     command: ["jupyter", "lab", "--ip", "0.0.0.0", "--allow-root"]
     resources:
       requests:
