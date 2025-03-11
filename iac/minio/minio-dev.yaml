@@ -34,7 +34,7 @@ spec:
   volumes:
   - name: localvolume
     hostPath: # MinIO generally recommends using locally-attached volumes
-      path: /data/tungtx2/Master/big-data/big_data_storage_integration_processing/iac/minio/data # Specify a path to a local drive or volume on the Kubernetes worker node
+      path: /home/fiores/Desktop/HUST/Master/big-data-intergration/big_data_storage_integration_processing/volumes/minio/data # Specify a path to a local drive or volume on the Kubernetes worker node
       type: DirectoryOrCreate # The path to the last directory must exist
 
 ---

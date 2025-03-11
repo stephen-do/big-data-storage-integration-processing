@@ -1,0 +1,11 @@
+global:
+  postgresql:
+    auth:
+      database: sampledb
+      username: admin
+      password: adminpassword
+
+primary:
+  service:
+    ports:
+      postgresql: 5432

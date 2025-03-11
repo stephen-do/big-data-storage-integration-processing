@@ -1,4 +1,4 @@
-FROM dongoctuyen/spark:base-v3.4
+FROM fiores/spark:base-v3.4
 
 USER root
 
