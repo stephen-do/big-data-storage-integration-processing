@@ -21,10 +21,10 @@ spec:
   sources:
     - repoURL: https://github.com/stephen-do/big_data_storage_integration_processing.git
       targetRevision: main
-      ref: trino
+      ref: apps
     - repoURL: https://trinodb.github.io/charts/
       targetRevision: 0.21.0
       chart: trino
       helm:
         valueFiles:
-          - $trino/local/values.yaml
+          - $apps/apps/trino/values.yaml
