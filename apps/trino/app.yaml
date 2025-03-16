@@ -23,7 +23,7 @@ spec:
       targetRevision: main
       ref: apps
     - repoURL: https://trinodb.github.io/charts/
-      targetRevision: 0.21.0
+      targetRevision: 1.37.0
       chart: trino
       helm:
         valueFiles:
