@@ -18,9 +18,9 @@ configs:
     big-data:
       url: https://github.com/stephen-do/big_data_storage_integration_processing
       type: git
-    bitnami:
+    artifacthub:
       type: helm
-      url: https://charts.bitnami.com/bitnami
+      url: https://artifacthub.io/packages/helm/apache-airflow/airflow
     devspace:
       type: helm
       url: https://charts.devspace.sh
