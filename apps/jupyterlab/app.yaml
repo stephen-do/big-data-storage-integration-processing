@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jupyterlab
+  namespace: argocd
+spec:
+  destination:
+    namespace: jupyterlab
+    server: https://kubernetes.default.svc
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - Validate=false
+      - CreateNamespace=true
+      - PrunePropagationPolicy=foreground
+      - PruneLast=true
+      - RespectIgnoreDifferences=true
+  sources:
+    - repoURL: https://github.com/stephen-do/big_data_storage_integration_processing.git
+      targetRevision: main
+      ref: apps
+      path: apps/jupyterlab
+      directory:
+        recurse: true
