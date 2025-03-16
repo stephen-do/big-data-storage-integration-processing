@@ -18,15 +18,6 @@ configs:
     big-data:
       url: https://github.com/stephen-do/big_data_storage_integration_processing
       type: git
-    artifacthub:
-      type: helm
-      url: https://artifacthub.io/packages/helm/apache-airflow/airflow
-    devspace:
-      type: helm
-      url: https://charts.devspace.sh
-    ory:
-      type: helm
-      url: https://k8s.ory.sh/helm/charts
   credentialTemplates:
     https-creds:
       url: https://github.com/stephen-do
