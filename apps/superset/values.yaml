@@ -293,7 +293,7 @@ supersetNode:
       enabled: false
       ssl_cert_reqs: CERT_NONE
     # You need to change below configuration incase bringing own PostgresSQL instance and also set postgresql.enabled:false
-    db_host: "192.168.21.103"
+    db_host: "192.168.1.6"
     db_port: "5432"
     db_user: postgres
     db_pass: admin
