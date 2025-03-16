@@ -1,0 +1,34 @@
+redis-ha:
+  enabled: false
+
+controller:
+  replicas: 1
+
+server:
+  replicas: 1
+
+repoServer:
+  replicas: 1
+
+applicationSet:
+  replicas: 1
+
+configs:
+  repositories:
+    big-data:
+      url: https://github.com/stephen-do/big_data_storage_integration_processing
+      type: git
+    bitnami:
+      type: helm
+      url: https://charts.bitnami.com/bitnami
+    devspace:
+      type: helm
+      url: https://charts.devspace.sh
+    ory:
+      type: helm
+      url: https://k8s.ory.sh/helm/charts
+  credentialTemplates:
+    https-creds:
+      url: https://github.com/stephen-do
+      username: stephen-do
+      password: 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
