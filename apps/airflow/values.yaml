@@ -410,7 +410,7 @@ data:
     user: postgres
     pass: admin
     protocol: postgresql
-    host: 192.168.21.102
+    host: 192.168.5.26
     port: 5432
     db: airflow
     sslmode: disable
@@ -434,7 +434,7 @@ fernetKey: ~
 fernetKeySecretName: ~
 
 # Flask secret key for Airflow Webserver: `[webserver] secret_key` in airflow.cfg
-webserverSecretKey: ~
+webserverSecretKey: 3c841e42a85129e61b457e3482881dc9
 webserverSecretKeySecretName: ~
 
 # In order to use kerberos you need to create secret containing the keytab file
@@ -2594,22 +2594,20 @@ dags:
     ## optional subpath for dag volume mount
     subPath: ~
   gitSync:
-    enabled: false
+    enabled: true
 
     # git repo clone url
     # ssh example: git@github.com:apache/airflow.git
     # https example: https://github.com/apache/airflow.git
-    repo: https://github.com/apache/airflow.git
-    branch: v2-2-stable
+    repo: https://github.com/stephen-do/big_data_storage_integration_processing.git
+    branch: main
     rev: HEAD
-    # The git revision (branch, tag, or hash) to check out, v4 only
-    ref: v2-2-stable
-    depth: 1
+    depth: 5
     # the number of consecutive failures allowed before aborting
     maxFailures: 0
     # subpath within the repo where dags are located
     # should be "" if dags are at repo root
-    subPath: "tests/dags"
+    subPath: "code/dags"
     # if your repo needs a user name password
     # you can load them to a k8s secret like the one below
     #   ---
@@ -2626,7 +2624,7 @@ dags:
     #     GITSYNC_PASSWORD: <base64_encoded_git_password>
     # and specify the name of the secret below
     #
-    # credentialsSecret: git-credentials
+    credentialsSecret: git-credentials
     #
     #
     # If you are using an ssh clone url, you can load
