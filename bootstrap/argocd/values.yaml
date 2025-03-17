@@ -6,6 +6,9 @@ controller:
 
 server:
   replicas: 1
+  service:
+    type: NodePort
+    nodePortHttp: 30006
 
 repoServer:
   replicas: 1
@@ -14,6 +17,8 @@ applicationSet:
   replicas: 1
 
 configs:
+  secret:
+    argocdServerAdminPassword: "$2a$10$CZgs.byM/WfhPpOBkURK4O6DVAFLFFDJ23DZuF0m9MKE0o7P7ud3."
   repositories:
     big-data:
       url: https://github.com/stephen-do/big_data_storage_integration_processing
