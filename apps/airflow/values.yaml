@@ -410,7 +410,7 @@ data:
     user: postgres
     pass: admin
     protocol: postgresql
-    host: 172.20.10.13
+    host: 192.168.21.102
     port: 5432
     db: airflow
     sslmode: disable
