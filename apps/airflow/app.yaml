@@ -22,7 +22,7 @@ spec:
     - repoURL: https://github.com/stephen-do/big_data_storage_integration_processing.git
       targetRevision: main
       ref: apps
-    - repoURL: https://airflow.apache.org
+    - repoURL: https://airflow.apache.org/
       targetRevision: 1.15.0
       chart: airflow
       helm:

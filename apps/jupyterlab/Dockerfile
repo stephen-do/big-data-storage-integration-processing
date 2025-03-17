@@ -4,7 +4,7 @@ USER root
 
 RUN pip3 install --no-cache-dir jupyterlab traitlets pygments s3contents \
 	&& mkdir -p /home/public && chmod 777 /home/public
-RUN pip3 install pyspark
+RUN pip3 install pyspark==3.4.0
 RUN pip3 install jupyterlab-sparkmonitor ipynb
 RUN pip3 install jupyterlab-s3-browser bokeh
 RUN jupyter serverextension enable --py jupyterlab_s3_browser
