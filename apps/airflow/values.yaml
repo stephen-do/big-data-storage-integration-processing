@@ -413,7 +413,7 @@ data:
     user: postgres
     pass: admin
     protocol: postgresql
-    host: 192.168.5.26
+    host: 192.168.21.103
     port: 5432
     db: airflow
     sslmode: disable
@@ -2597,20 +2597,22 @@ dags:
     ## optional subpath for dag volume mount
     subPath: ~
   gitSync:
-    enabled: true
+    enabled: false
 
     # git repo clone url
     # ssh example: git@github.com:apache/airflow.git
     # https example: https://github.com/apache/airflow.git
-    repo: ssh://git@github.com:steph  en-do/big_data_storage_integration_processing.git
+    repo: https://github.com/stephen-do/big_data_storage_integration_processing.git
     branch: main
     rev: HEAD
-    depth: 5
+    # The git revision (branch, tag, or hash) to check out, v4 only
+    ref: HEAD
+    depth: 2
     # the number of consecutive failures allowed before aborting
     maxFailures: 0
     # subpath within the repo where dags are located
     # should be "" if dags are at repo root
-    subPath: "code/dags"
+    subPath: "code/"
     # if your repo needs a user name password
     # you can load them to a k8s secret like the one below
     #   ---
@@ -2627,7 +2629,7 @@ dags:
     #     GITSYNC_PASSWORD: <base64_encoded_git_password>
     # and specify the name of the secret below
     #
-    # credentialsSecret: git-credentials
+    credentialsSecret: git-credentials
     #
     #
     # If you are using an ssh clone url, you can load
@@ -2641,7 +2643,7 @@ dags:
     #     # key needs to be gitSshKey
     #     gitSshKey: <base64_encoded_data>
     # and specify the name of the secret below
-    sshKeySecret: airflow-ssh-secret
+    # sshKeySecret: airflow-ssh-secret
     #
     # Or set sshKeySecret with your key
     # sshKey: |-
