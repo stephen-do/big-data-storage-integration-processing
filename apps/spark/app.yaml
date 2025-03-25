@@ -24,5 +24,8 @@ spec:
       targetRevision: main
       ref: apps
     - repoURL: https://kubeflow.github.io/spark-operator
-      targetRevision: 2.1.1
+      targetRevision: 2.1.0
       chart: spark-operator
+      helm:
+        valueFiles:
+          - $apps/apps/spark/values.yaml
