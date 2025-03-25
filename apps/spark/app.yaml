@@ -18,6 +18,7 @@ spec:
       - PrunePropagationPolicy=foreground
       - PruneLast=true
       - RespectIgnoreDifferences=true
+      - ServerSideApply=true
   sources:
     - repoURL: https://github.com/stephen-do/big_data_storage_integration_processing.git
       targetRevision: main
