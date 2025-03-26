@@ -1,0 +1,12 @@
+primary:
+  persistence:
+    enabled: true
+    size: 8Gi # Dung lượng ổ đĩa
+
+auth:
+  username: postgres
+  password: Nng16IAC5r
+  database: airflow
+
+replica:
+  enabled: false

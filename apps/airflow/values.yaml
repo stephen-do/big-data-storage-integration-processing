@@ -408,9 +408,10 @@ data:
   # Otherwise pass connection values in
   metadataConnection:
     user: postgres
-    pass: admin
+    pass: Nng16IAC5r
     protocol: postgresql
-    host: 192.168.5.26
+#    host: 192.168.5.26
+    host: my-postgresql.postgres.svc.cluster.local
     port: 5432
     db: airflow
     sslmode: disable
@@ -2601,10 +2602,10 @@ dags:
     # https example: https://github.com/apache/airflow.git
     repo: https://github.com/stephen-do/big_data_storage_integration_processing.git
     branch: main
-    rev: HEAD
-    depth: 5
+#    rev: HEAD
+#    depth: 5
     # the number of consecutive failures allowed before aborting
-    maxFailures: 0
+#    maxFailures: 0
     # subpath within the repo where dags are located
     # should be "" if dags are at repo root
     subPath: "code/dags"
