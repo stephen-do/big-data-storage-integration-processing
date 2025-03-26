@@ -23,7 +23,7 @@ spec:
     "spark.hadoop.fs.s3a.region": "us-east-1"
     "spark.driver.extraJavaOptions": "-Dcom.amazonaws.services.s3.enableV4"
     "spark.executor.extraJavaOptions": "-Dcom.amazonaws.services.s3.enableV4"
-    "spark.archives": "s3a://jobs/src.zips#jobs"
+    "spark.archives": "s3a://jobs/src.zip#jobs"
   restartPolicy:
     type: Never
   driver:
