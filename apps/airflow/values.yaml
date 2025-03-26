@@ -411,11 +411,11 @@ data:
   # Otherwise pass connection values in
   metadataConnection:
     user: postgres
-    pass: admin
+    pass: postgres
     protocol: postgresql
-    host: 192.168.21.101
+    host: ~
     port: 5432
-    db: airflow
+    db: postgres
     sslmode: disable
   # resultBackendConnection defaults to the same database as metadataConnection
   resultBackendConnection: ~
