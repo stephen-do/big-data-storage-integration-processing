@@ -31,7 +31,7 @@ image:
   # -- Image registry.
   registry: docker.io
   # -- Image repository.
-  repository: kubeflow/spark-operator
+  repository: dongoctuyen/spark-operator
   # -- Image tag.
   # @default -- If not set, the chart appVersion will be used.
   tag: ""

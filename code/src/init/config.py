@@ -19,11 +19,5 @@ def create_spark_config(env: Optional[str] = "prod") -> SparkConf:
     :rtype: SparkConf
     """
     assert isinstance(env, str)
-    # client = boto3.client(env)
     config = SparkConf()
-    ## clickhouse
-    config.set("spark.sql.catalog.clickhouse.database", "ods_rt")
-    config.set("spark.sql.avro.datetimeRebaseModeInRead", "LEGACY")
-    config.set("spark.sql.parquet.int96RebaseModeInWrite", "CORRECTED")
-    config.set("spark.sql.parquet.writeLegacyFormat", "true")
     return config

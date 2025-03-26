@@ -1,43 +1,27 @@
-from datetime import datetime, timedelta
+import pendulum
 from airflow import DAG
-from airflow.operators.python import PythonOperator
-from airflow.operators.bash import BashOperator
+from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
 
-# Define default arguments
+
 default_args = {
-    "owner": "tuyendn",
-    "depends_on_past": False,
-    "start_date": datetime(2024, 3, 17),
-    "retries": 1,
-    "retry_delay": timedelta(minutes=5),
+  'owner': '',
+  'project': '',
+  'retry_delay': timedelta(seconds=30),
+  'retries': 6
 }
 
-# Initialize DAG
-dag = DAG(
-    "example_dag",
-    default_args=default_args,
-    description="A simple example DAG",
-    schedule_interval=None,  # Run once per day
-    catchup=False,
-)
-
-# Python function for PythonOperator
-def print_hello():
-    print("Hello, Airflow!")
-
-# Task 1: PythonOperator
-task_1 = PythonOperator(
-    task_id="print_hello",
-    python_callable=print_hello,
-    dag=dag,
-)
-
-# Task 2: BashOperator
-task_2 = BashOperator(
-    task_id="print_date",
-    bash_command="date",
-    dag=dag,
-)
-
-# Task Dependencies
-task_1 >> task_2  # task_1 runs before task_2
+with DAG('dag_name',
+    start_date=pendulum.datetime(2024, 2, 1, tz="Asia/Ho_Chi_Minh"),
+    schedule_interval=None,
+    default_args = default_args,
+    tags=["tag"]
+) as dag:
+    spark_job = SparkKubernetesOperator(
+       task_id='task_id',
+       application_file='app.yaml',
+       namespace= "spark-operator",
+       kubernetes_conn_id='k8s',
+       delete_on_termination=True,
+       do_xcom_push=False,
+       dag=dag
+   )

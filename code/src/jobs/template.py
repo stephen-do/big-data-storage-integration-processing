@@ -8,7 +8,6 @@ Description: template for all jobs
 from configparser import ConfigParser
 from pyspark.sql import SparkSession
 from init.logger import Logger
-# from shared.extract import subscribe_single_kafka_topic
 
 
 def run(spark: SparkSession, logger: Logger, config: ConfigParser, **kwargs) -> None:

@@ -15,5 +15,8 @@ RUN cd /opt/spark/jars \
  && wget "https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-core/1.4.3/iceberg-core-1.4.3.jar" \
  && wget "https://repo1.maven.org/maven2/com/github/ben-manes/caffeine/caffeine/3.1.8/caffeine-3.1.8.jar"
 
+ENV SPARK_HOME=/opt/spark
+WORKDIR /opt/spark/work-dir
+
 ARG spark_uid=185
 USER ${spark_uid}

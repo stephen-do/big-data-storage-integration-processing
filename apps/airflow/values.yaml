@@ -411,11 +411,11 @@ data:
   # Otherwise pass connection values in
   metadataConnection:
     user: postgres
-    pass: admin
+    pass: postgres
     protocol: postgresql
-    host: 192.168.21.103
+    host: ~
     port: 5432
-    db: airflow
+    db: postgres
     sslmode: disable
   # resultBackendConnection defaults to the same database as metadataConnection
   resultBackendConnection: ~
@@ -2461,7 +2461,7 @@ cleanup:
 # Configuration for postgresql subchart
 # Not recommended for production
 postgresql:
-  enabled: false
+  enabled: true
   auth:
     enablePostgresUser: true
     postgresPassword: postgres
@@ -2597,19 +2597,19 @@ dags:
     ## optional subpath for dag volume mount
     subPath: ~
   gitSync:
-    enabled: false
+    enabled: true
 
     # git repo clone url
     # ssh example: git@github.com:apache/airflow.git
     # https example: https://github.com/apache/airflow.git
     repo: https://github.com/stephen-do/big_data_storage_integration_processing.git
     branch: main
-    rev: HEAD
+#    rev: HEAD
     # The git revision (branch, tag, or hash) to check out, v4 only
-    ref: HEAD
+#    ref: HEAD
     depth: 2
     # the number of consecutive failures allowed before aborting
-    maxFailures: 0
+#    maxFailures: 0
     # subpath within the repo where dags are located
     # should be "" if dags are at repo root
     subPath: "code/"

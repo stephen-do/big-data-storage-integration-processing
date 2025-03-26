@@ -8,7 +8,6 @@ Description: an entrypoint session for all spark jobs
 import argparse
 import importlib
 import sys
-import os
 import configparser
 from init.session import create_spark_session
 
@@ -38,9 +37,6 @@ if __name__ == "__main__":
     env = args.env
     # read config from SPARK_CONF_DIR/spark-env.sh or spark-defaults.conf
     config = configparser.ConfigParser()
-    config.read(
-        f"{os.environ.get('SPARK_OTHER_CONFIG_DIR', '/opt/spark/config')}/other_config.ini"
-    )
 
     # create spark session and logger
     spark, logger = create_spark_session(job_name, env)
