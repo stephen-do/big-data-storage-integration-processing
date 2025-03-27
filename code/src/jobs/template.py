@@ -24,4 +24,6 @@ def run(spark: SparkSession, logger: Logger, config: ConfigParser, **kwargs) -> 
     logger.info(config)
     assert isinstance(spark, SparkSession)
     assert isinstance(logger, Logger)
-    logger.info("abc")
+    df = spark.sql("select * from raw.fiinapi.stx_mrk_upcomstock")
+    df.show()
+    logger.info("completed")
