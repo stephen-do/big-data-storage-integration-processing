@@ -367,16 +367,16 @@ data:
     db: airflow
     sslmode: disable
   # resultBackendConnection defaults to the same database as metadataConnection
-  resultBackendConnection: ~
+#  resultBackendConnection: ~
   # or, you can use a different database
-  # resultBackendConnection:
-  #   user: postgres
-  #   pass: postgres
-  #   protocol: postgresql
-  #   host: ~
-  #   port: 5432
-  #   db: postgres
-  #   sslmode: disable
+  resultBackendConnection:
+    user: postgres
+    pass: admin
+    protocol: postgresql
+    host: 192.168.1.6
+    port: 5432
+    db: airflow
+    sslmode: disable
   # Note: brokerUrl can only be set during install, not upgrade
   brokerUrl: ~
 
