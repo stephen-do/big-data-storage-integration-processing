@@ -2399,7 +2399,8 @@ cleanup:
   args: ["bash", "-c", "exec airflow kubernetes cleanup-pods --namespace={{ .Release.Namespace }}"]
 
   # jobAnnotations are annotations on the cleanup CronJob
-  jobAnnotations: {}
+  jobAnnotations:
+    "argocd.argoproj.io/hook": Sync
 
   # Select certain nodes for airflow cleanup pods.
   nodeSelector: {}
