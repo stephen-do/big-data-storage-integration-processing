@@ -387,7 +387,7 @@ catalogs:
     connector.name=iceberg
     iceberg.catalog.type=jdbc
     iceberg.jdbc-catalog.driver-class=org.postgresql.Driver
-    iceberg.jdbc-catalog.connection-url=jdbc:postgresql://192.168.21.103:5432/datalake
+    iceberg.jdbc-catalog.connection-url=jdbc:postgresql://host.docker.internal:5432/datalake
     iceberg.jdbc-catalog.connection-user=postgres
     iceberg.jdbc-catalog.connection-password=admin
     iceberg.jdbc-catalog.catalog-name=golden

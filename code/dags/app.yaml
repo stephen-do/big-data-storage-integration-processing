@@ -24,10 +24,10 @@ spec:
     "spark.driver.extraJavaOptions": "-Dcom.amazonaws.services.s3.enableV4 -Daws.region=us-east-1 -Daws.accessKeyId=admin -Daws.secretAccessKey=Qwerty@1234"
     "spark.executor.extraJavaOptions": "-Dcom.amazonaws.services.s3.enableV4 -Daws.region=us-east-1 -Daws.accessKeyId=admin -Daws.secretAccessKey=Qwerty@1234"
     "spark.archives": "s3a://jobs/src.zip#jobs"
-    "spark.sql.catalog.raw.uri": "jdbc:postgresql://192.168.1.6:5432/datalake"
+    "spark.sql.catalog.raw.uri": "jdbc:postgresql://host.docker.internal:5432/datalake"
     "spark.sql.catalog.raw.jdbc.user": "postgres"
     "spark.sql.catalog.raw.jdbc.password": "admin"
-    "spark.sql.catalog.golden.uri": "jdbc:postgresql://192.168.1.6:5432/datalake"
+    "spark.sql.catalog.golden.uri": "jdbc:postgresql://host.docker.internal:5432/datalake"
     "spark.sql.catalog.golden.jdbc.user": "postgres"
     "spark.sql.catalog.golden.jdbc.password": "admin"
   restartPolicy:
