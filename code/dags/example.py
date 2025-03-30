@@ -20,7 +20,7 @@ with DAG('dag_name',
     spark_job = SparkKubernetesOperator(
        task_id='task_id',
        application_file='app.yaml',
-       namespace= "spark-operator",
+       namespace= "spark",
        kubernetes_conn_id='k8s',
        delete_on_termination=True,
        do_xcom_push=False,
