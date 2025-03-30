@@ -23,7 +23,7 @@ spec:
       targetRevision: main
       ref: apps
     - repoURL: https://airflow.apache.org/
-      targetRevision: 1.8.0
+      targetRevision: 1.15.0
       chart: airflow
       helm:
         valueFiles:
