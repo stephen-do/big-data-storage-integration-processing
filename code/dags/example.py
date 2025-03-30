@@ -1,4 +1,5 @@
 import pendulum
+from datetime import timedelta
 from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
 
@@ -7,7 +8,7 @@ default_args = {
   'owner': '',
   'project': '',
   'retry_delay': timedelta(seconds=30),
-  'retries': 6
+  'retries': 0
 }
 
 with DAG('dag_name',
