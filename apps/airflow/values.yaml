@@ -1703,7 +1703,7 @@ cleanup:
 # Configuration for postgresql subchart
 # Not recommended for production
 postgresql:
-  enabled: false
+  enabled: true
   image:
     tag: "11"
   auth:
