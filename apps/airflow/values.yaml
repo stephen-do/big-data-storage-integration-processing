@@ -360,11 +360,11 @@ data:
   # Otherwise pass connection values in
   metadataConnection:
     user: postgres
-    pass: postgres
+    pass: admin
     protocol: postgresql
-    host: ~
+    host: host.docker.internal
     port: 5432
-    db: postgres
+    db: airflow
     sslmode: disable
   # resultBackendConnection defaults to the same database as metadataConnection
   resultBackendConnection: ~
@@ -789,7 +789,8 @@ createUserJob:
   # Annotations on the create user job pod
   annotations: {}
   # jobAnnotations are annotations on the create user job
-  jobAnnotations: {}
+  jobAnnotations:
+    "argocd.argoproj.io/hook": Sync
 
   # Labels specific to createUserJob objects and pods
   labels: {}
@@ -824,8 +825,8 @@ createUserJob:
   topologySpreadConstraints: []
   # In case you need to disable the helm hooks that create the jobs after install.
   # Disable this if you are using ArgoCD for example
-  useHelmHooks: true
-  applyCustomEnv: true
+  useHelmHooks: false
+  applyCustomEnv: false
 
   env: []
 
@@ -894,8 +895,8 @@ migrateDatabaseJob:
   topologySpreadConstraints: []
   # In case you need to disable the helm hooks that create the jobs after install.
   # Disable this if you are using ArgoCD for example
-  useHelmHooks: true
-  applyCustomEnv: true
+  useHelmHooks: false
+  applyCustomEnv: false
 
 # Airflow webserver settings
 webserver:
@@ -1703,7 +1704,7 @@ cleanup:
 # Configuration for postgresql subchart
 # Not recommended for production
 postgresql:
-  enabled: true
+  enabled: false
   image:
     tag: "11"
   auth:
@@ -1828,7 +1829,7 @@ dags:
     ## optional subpath for dag volume mount
     subPath: ~
   gitSync:
-    enabled: false
+    enabled: true
 
     # git repo clone url
     # ssh example: git@github.com:apache/airflow.git
