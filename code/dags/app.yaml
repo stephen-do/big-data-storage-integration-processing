@@ -33,14 +33,14 @@ spec:
   restartPolicy:
     type: Never
   driver:
-    cores: 1
-    memory: 512m
+    cores: {{ params.driver_core }}
+    memory: {{ params.driver_mem }}
     serviceAccount: spark-operator-spark
     labels:
       version: 3.4.0
   executor:
-    instances: 1
-    cores: 1
-    memory: 512m
+    instances: {{ params.executor_ins }}
+    cores: {{ params.executor_core }}
+    memory: {{ params.executor_mem }}
     labels:
       version: 3.4.0

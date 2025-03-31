@@ -27,8 +27,30 @@ with DAG('main_pipeline_for_stock_data_dag',
         delete_on_termination=True,
         do_xcom_push=False,
         params={
-            "job": "golden_stock_index_rsi"
+            "job": "golden_stock_index_rsi",
+            "driver_core": '1',
+            "driver_mem": '512m',
+            "executor_ins": '1',
+            "executor_core": '1',
+            "executor_mem": '512m',
         },
         dag=dag
     )
-    start_task >> golden_stock_index_rsi >> end_task
+    golden_stock_index_ema = SparkKubernetesOperator(
+        task_id='golden_stock_index_ema',
+        application_file='app.yaml',
+        namespace="spark",
+        kubernetes_conn_id='k8s',
+        delete_on_termination=True,
+        do_xcom_push=False,
+        params={
+            "job": "golden_stock_index_ema",
+            "driver_core": '1',
+            "driver_mem": '512m',
+            "executor_ins": '1',
+            "executor_core": '1',
+            "executor_mem": '512m',
+        },
+        dag=dag
+    )
+    start_task >> [golden_stock_index_rsi, golden_stock_index_ema] >> end_task
