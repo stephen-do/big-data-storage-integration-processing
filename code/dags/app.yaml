@@ -1,7 +1,7 @@
 apiVersion: sparkoperator.k8s.io/v1beta2
 kind: SparkApplication
 metadata:
-  name: template
+  name: {{ task.task_id }}
   namespace: spark
 spec:
   type: Python
@@ -11,7 +11,7 @@ spec:
   imagePullPolicy: IfNotPresent
   mainApplicationFile: local:///opt/spark/work-dir/jobs/src/main.py
   sparkVersion: 3.4.0
-  arguments: ["--job", "template", "--env", "dev"]
+  arguments: ["--job", {{ params.job }}, "--env", "dev", "--business_date", "{{ dag_run.logical_date.astimezone(dag.timezone) | ds }}"]
   sparkConf:
     "spark.hadoop.fs.s3a.impl": "org.apache.hadoop.fs.s3a.S3AFileSystem"
     "spark.hadoop.fs.s3a.access.key": "admin"

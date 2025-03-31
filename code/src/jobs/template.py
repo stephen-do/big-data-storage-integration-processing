@@ -10,7 +10,7 @@ from pyspark.sql import SparkSession
 from init.logger import Logger
 
 
-def run(spark: SparkSession, logger: Logger, config: ConfigParser, **kwargs) -> None:
+def run(spark: SparkSession, logger: Logger, config: ConfigParser, business_date: str, **kwargs) -> None:
     """
     Example Template for All job
     :param: spark

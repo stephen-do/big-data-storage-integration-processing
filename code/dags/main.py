@@ -1,0 +1,34 @@
+import pendulum
+from datetime import timedelta
+from airflow import DAG
+from airflow.operators.dummy_operator import DummyOperator
+from airflow.providers.cncf.kubernetes.operators.spark_kubernetes import SparkKubernetesOperator
+
+default_args = {
+    'owner': '',
+    'project': '',
+    'retry_delay': timedelta(seconds=30),
+    'retries': 0
+}
+
+with DAG('main_pipeline_for_stock_data_dag',
+         start_date=pendulum.datetime(2024, 2, 1, tz="Asia/Ho_Chi_Minh"),
+         schedule_interval=None,
+         default_args=default_args,
+         tags=["tag"]
+         ) as dag:
+    start_task = DummyOperator(task_id='start')
+    end_task = DummyOperator(task_id='end')
+    golden_stock_index_rsi = SparkKubernetesOperator(
+        task_id='golden_stock_index_rsi',
+        application_file='app.yaml',
+        namespace="spark",
+        kubernetes_conn_id='k8s',
+        delete_on_termination=True,
+        do_xcom_push=False,
+        params={
+            "job": "golden_stock_index_rsi"
+        },
+        dag=dag
+    )
+    start_task >> golden_stock_index_rsi >> end_task
