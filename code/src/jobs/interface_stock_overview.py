@@ -40,6 +40,7 @@ def run(spark: SparkSession, logger: Logger, config: ConfigParser, business_date
         , (uptrend_rank_tmp/v_total_stock) * 100 uptrend_rank 
         , (cash_flow_rank_tmp/v_total_stock) * 10 cash_flow_rank 
         , (cash_flow_momentum_rank_tmp/v_total_stock) * 10 cash_flow_momentum_rank
+        , CAST('{business_date}' AS DATE) tradingdate
     from (
         select 
             t.*

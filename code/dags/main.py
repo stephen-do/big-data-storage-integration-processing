@@ -72,7 +72,41 @@ with DAG('main_pipeline_for_stock_data_dag',
             },
             dag=dag
         )
-        [golden_stock_index_rsi, golden_stock_index_ema] >> interface_stock_overview
+        interface_stock_growth = SparkKubernetesOperator(
+            task_id='interface_stock_growth',
+            application_file='app.yaml',
+            namespace="spark",
+            kubernetes_conn_id='k8s',
+            delete_on_termination=True,
+            do_xcom_push=False,
+            params={
+                "job": "interface_stock_growth",
+                "driver_core": '1',
+                "driver_mem": '1g',
+                "executor_ins": '1',
+                "executor_core": '1',
+                "executor_mem": '1g',
+            },
+            dag=dag
+        )
+        interface_stock_rating = SparkKubernetesOperator(
+            task_id='interface_stock_rating',
+            application_file='app.yaml',
+            namespace="spark",
+            kubernetes_conn_id='k8s',
+            delete_on_termination=True,
+            do_xcom_push=False,
+            params={
+                "job": "interface_stock_rating",
+                "driver_core": '1',
+                "driver_mem": '1g',
+                "executor_ins": '1',
+                "executor_core": '1',
+                "executor_mem": '1g',
+            },
+            dag=dag
+        )
+        [golden_stock_index_rsi, golden_stock_index_ema, interface_stock_growth] >> interface_stock_overview >> interface_stock_rating
     with TaskGroup("industry_jobs") as industry_jobs:
         golden_industry_index_ema = SparkKubernetesOperator(
             task_id='golden_industry_index_ema',
