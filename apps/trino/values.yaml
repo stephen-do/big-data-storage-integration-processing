@@ -390,8 +390,8 @@ catalogs:
     iceberg.jdbc-catalog.connection-url=jdbc:postgresql://host.docker.internal:5432/datalake
     iceberg.jdbc-catalog.connection-user=postgres
     iceberg.jdbc-catalog.connection-password=admin
-    iceberg.jdbc-catalog.catalog-name=golden
-    iceberg.jdbc-catalog.default-warehouse-dir=s3a://golden
+    iceberg.jdbc-catalog.catalog-name=interface
+    iceberg.jdbc-catalog.default-warehouse-dir=s3a://interface
     s3.endpoint=http://minio-service.minio-dev.svc.cluster.local:9000
     s3.aws-access-key=admin
     s3.aws-secret-key=Qwerty@1234
