@@ -1,5 +1,5 @@
 """
-Module Name: template.py
+Module Name: golden_stock_index_ema.py
 Author: tuyendn3
 Version: 1.0
 Description: template for all jobs
