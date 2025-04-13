@@ -1,6 +1,6 @@
 """
 Module Name: interface_stock_overview.py
-Author: tuyendn3
+
 Version: 1.0
 Description: template for all jobs
 """

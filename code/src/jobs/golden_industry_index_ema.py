@@ -1,6 +1,6 @@
 """
 Module Name: golden_industry_index_ema.py
-Author: tuyendn3
+
 Version: 1.0
 Description: template for all jobs
 """

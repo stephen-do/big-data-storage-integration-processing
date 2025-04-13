@@ -1,6 +1,6 @@
 """
 Module Name: session.py
-Author: tuyendn3
+
 Version: 1.0
 Description: a spark session to run the job
 """

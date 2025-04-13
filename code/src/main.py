@@ -1,6 +1,6 @@
 """
 Module Name: main.py
-Author: tuyendn3
+
 Version: 1.0
 Description: an entrypoint session for all spark jobs
 """

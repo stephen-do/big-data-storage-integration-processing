@@ -1,6 +1,6 @@
 """
 Module Name: logger.py
-Author: tuyendn3
+
 Version: 1.0
 Description: a spark logger
 """

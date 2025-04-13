@@ -1,6 +1,6 @@
 """
 Module Name: golden_stock_index_rsi.py
-Author: tuyendn3
+
 Version: 1.0
 Description: template for all jobs
 """

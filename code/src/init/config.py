@@ -1,6 +1,6 @@
 """
 Module Name: config.py
-Author: tuyendn3
+
 Version: 1.0
 Description: a spark config for initialized spark session
 """
